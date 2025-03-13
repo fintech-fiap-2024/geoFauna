@@ -20,7 +20,8 @@ import br.com.fiap.geofauna.ui.theme.Exo
 fun CaixaDeEntrada(
     value: String,
     onValueChange: (String) -> Unit,
-    label: String
+    label: String,
+    trailingIcon: @Composable (() -> Unit)? = null
 ) {
     OutlinedTextField(
         value = value,
@@ -41,6 +42,7 @@ fun CaixaDeEntrada(
             cursorColor = Color.White,
             focusedBorderColor = Color.White,
             unfocusedBorderColor = colorResource(id = R.color.gray)
-        )
+        ),
+        trailingIcon = trailingIcon,
     )
 }
