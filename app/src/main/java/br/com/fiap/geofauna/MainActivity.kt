@@ -3,46 +3,29 @@ package br.com.fiap.geofauna
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-//import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.OutlinedTextField
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import br.com.fiap.geofauna.ui.theme.GeoFaunaTheme
-
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.TextFieldDefaults
-import androidx.compose.runtime.*
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import br.com.fiap.geofauna.components.BotaoLogin
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import br.com.fiap.geofauna.components.BotaoCustomizado
+import br.com.fiap.geofauna.components.CaixaDeEntrada
 import br.com.fiap.geofauna.ui.theme.Exo
 import br.com.fiap.geofauna.ui.theme.GeoFaunaTheme
 import br.com.fiap.geofauna.ui.theme.SourceSerif
@@ -51,7 +34,6 @@ import br.com.fiap.geofauna.ui.theme.SourceSerif
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
         setContent {
             GeoFaunaTheme {
                 Surface {
@@ -63,8 +45,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen() {
     var login by remember { mutableStateOf("")}
@@ -80,9 +60,8 @@ fun LoginScreen() {
         )
         Column (
             modifier = Modifier
-                .fillMaxSize()
-                .fillMaxWidth(),
-            verticalArrangement = Arrangement.Center,
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
@@ -96,78 +75,61 @@ fun LoginScreen() {
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
-                    .alpha(0.4f),
+                    .padding(16.dp),
                 shape = RoundedCornerShape(24.dp),
-                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
-                colors = CardDefaults.cardColors(containerColor = Color.White)
-
+                colors = CardDefaults.cardColors(containerColor = colorResource(id = R.color.primary_color).copy(alpha = 0.5f))
             ) {
                 Text(
                     text = "LOGIN",
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 16.dp),
+                        .fillMaxWidth(),
                     fontSize = 32.sp,
                     fontFamily = SourceSerif,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center,
-                    color = colorResource(id = R.color.tertiary_color)
+                    color = colorResource(id = R.color.gray)
                 )
-                OutlinedTextField(
+                CaixaDeEntrada(
                     value = login,
-                    onValueChange = { login = it },
-                    label = {
-                        Text(
-                            "Digite o login",
-                            color = Color.Black,
-                            fontFamily = Exo,
-                            fontWeight = FontWeight.Bold
-                        )
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 8.dp, end = 8.dp, bottom = 16.dp),
-
-                    colors = TextFieldDefaults.outlinedTextFieldColors(
-                        textColor = Color.Black,
-                        cursorColor = Color.Black,
-                        focusedBorderColor = colorResource(id = R.color.secondary_color),
-                        unfocusedBorderColor = colorResource(id = R.color.primary_color)
-                    )
+                    label = "Digite o Login",
+                    onValueChange = { login = it }
                 )
-                OutlinedTextField(
+                CaixaDeEntrada(
                     value = password,
-                    onValueChange = { password = it },
-                    label = { Text("Digite a senha", color = Color.Black) },
-                    visualTransformation = PasswordVisualTransformation(),
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 8.dp, end = 8.dp, bottom = 8.dp),
-                    colors = TextFieldDefaults.outlinedTextFieldColors(
-                        textColor = Color.Black,
-                        cursorColor = Color.Black,
-                        focusedBorderColor = colorResource(id = R.color.secondary_color),
-                        unfocusedBorderColor = colorResource(id = R.color.primary_color)
-                    )
+                    label = "Digite a senha",
+                    onValueChange = { password = it }
                 )
                 Text(
                     text = "Esqueci minha senha",
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(bottom = 16.dp, start = 8.dp)
-                        .clickable {  },
+                        .padding(bottom = 16.dp, end = 8.dp)
+                        .clickable { }
+                        .wrapContentWidth(Alignment.End),
                     fontSize = 16.sp,
                     fontFamily = Exo,
-                    fontWeight = FontWeight.Medium,
+                    fontWeight = FontWeight.Bold,
                     color = colorResource(id = R.color.gray)
                 )
-                BotaoLogin(
-                    text = "Registrar",
-                    icon = painterResource(id = R.drawable.patalaranja)
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
                 ) {
-                    // Ação ao clicar no botão
+                    BotaoCustomizado(
+                        text = "Entrar",
+                        icon = painterResource(id = R.drawable.pata_verde),
+                        backgroundColor = colorResource(id = R.color.secondary_color),
+                        iconBackgroundColor = Color(0xFFD6864A), // Laranja
+                        onClick = {  }
+                    )
+                    BotaoCustomizado(
+                        text = "Registrar",
+                        icon = painterResource(id = R.drawable.pata_laranja),
+                        backgroundColor = colorResource(id = R.color.tertiary_color),
+                        iconBackgroundColor = Color(0xFFD6864A),
+                        onClick = {  }
+                    )
                 }
             }
         }
