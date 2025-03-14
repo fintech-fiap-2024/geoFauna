@@ -11,20 +11,24 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.com.fiap.geofauna.R
+
 
 @Composable
 fun CardCustomizado(
+
     title: String,
+    icon: Painter,
     description: String,
     buttonText: String,
     onButtonClick: () -> Unit
@@ -35,20 +39,28 @@ fun CardCustomizado(
             .padding(16.dp),
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(containerColor = Color(0xFF00291F)),
-        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 12.dp)
     ) {
         Column(
             modifier = Modifier
                 .padding(16.dp)
         ) {
-            Row() {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
                 Text(
                     text = title,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White
+                    color = Color.White,
+                    modifier = Modifier.weight(1f)
                 )
-                //Icon(painter = , contentDescription = )
+                Icon(
+                    painter = icon,
+                    contentDescription = null,
+                    tint = Color.White
+                )
             }
             Spacer(modifier = Modifier.height(8.dp))
             Text(
@@ -59,14 +71,14 @@ fun CardCustomizado(
             Spacer(modifier = Modifier.height(16.dp))
             Button(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .shadow(8.dp),
+                    .fillMaxWidth(),
                 onClick = onButtonClick,
                 shape = RoundedCornerShape(6.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFE07A4F))
+                colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.tertiary_color)),
             ) {
                 Text(buttonText, color = Color.White)
             }
         }
     }
 }
+

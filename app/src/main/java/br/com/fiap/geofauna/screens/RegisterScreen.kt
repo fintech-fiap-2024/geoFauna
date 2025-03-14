@@ -93,7 +93,7 @@ fun RegisterScreen(navController: NavController) {
                     ) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
-                            contentDescription = "Voltar",
+                            contentDescription = "Ícone voltar",
                             tint = Color.White
                         )
                     }
@@ -116,7 +116,7 @@ fun RegisterScreen(navController: NavController) {
                     trailingIcon = {
                         Icon(
                             imageVector = Icons.Filled.AccountCircle,
-                            contentDescription = "Campo usuário",
+                            contentDescription = "Ícone usuário",
                             tint = Color.White
                         )
                     }
@@ -128,7 +128,7 @@ fun RegisterScreen(navController: NavController) {
                     trailingIcon = {
                         Icon(
                             painter = painterResource(id = R.drawable.key_24),
-                            contentDescription = "Campo senha",
+                            contentDescription = "Ícone senha",
                             tint = Color.White
                         )
                     }
@@ -140,7 +140,7 @@ fun RegisterScreen(navController: NavController) {
                     trailingIcon = {
                         Icon(
                             imageVector = Icons.Filled.Email,
-                            contentDescription = "Campo e-mail",
+                            contentDescription = "Ícone e-mail",
                             tint = Color.White
                         )
                     }
@@ -152,7 +152,7 @@ fun RegisterScreen(navController: NavController) {
                     trailingIcon = {
                         Icon(
                             imageVector = Icons.Filled.Phone,
-                            contentDescription = "Campo celular",
+                            contentDescription = "Ícone celular",
                             tint = Color.White
                         )
                     }

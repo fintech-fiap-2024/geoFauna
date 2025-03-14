@@ -5,8 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -18,7 +16,6 @@ import androidx.compose.material3.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -63,6 +60,7 @@ fun DashboardScreen(navController: NavController) {
         ) {
             CardCustomizado(
                 title = "Buscar por animal",
+                icon = painterResource(id = R.drawable.search_24),
                 description = "Você pode buscar por um animal específico e saber mais sobre ele, além de seu habitat.",
                 buttonText = "Pesquisar",
                 onButtonClick = { navController.navigate("searchanimal") }
@@ -74,6 +72,7 @@ fun DashboardScreen(navController: NavController) {
             )
             CardCustomizado(
                 title = "Buscar por região",
+                icon = painterResource(id = R.drawable.map_24),
                 description = "Você pode visualizar o mapa e os animais mais comuns de cada região.",
                 buttonText = "Abrir mapa",
                 onButtonClick = {  }

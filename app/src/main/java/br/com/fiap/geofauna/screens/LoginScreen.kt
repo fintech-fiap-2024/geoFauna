@@ -92,7 +92,7 @@ fun LoginScreen(navController: NavController) {
                     trailingIcon = {
                         Icon(
                             imageVector = Icons.Filled.AccountCircle,
-                            contentDescription = "Campo usuário",
+                            contentDescription = "Ícone usuário",
                             tint = Color.White
                         )
                     }
@@ -104,7 +104,7 @@ fun LoginScreen(navController: NavController) {
                     trailingIcon = {
                         Icon(
                             painter = painterResource(id = R.drawable.key_24),
-                            contentDescription = "Campo usuário",
+                            contentDescription = "Ícone senha",
                             tint = Color.White
                         )
                     }
