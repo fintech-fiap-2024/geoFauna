@@ -130,7 +130,7 @@ fun LoginScreen(navController: NavController) {
                         text = "Entrar",
                         icon = painterResource(id = R.drawable.pata_verde),
                         backgroundColor = colorResource(id = R.color.secondary_color),
-                        onClick = {  }
+                        onClick = { navController.navigate("dashboard") }
                     )
                     BotaoCustomizado(
                         text = "Registrar",
