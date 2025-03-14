@@ -13,6 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import br.com.fiap.geofauna.screens.DashboardScreen
 import br.com.fiap.geofauna.screens.LoginScreen
 import br.com.fiap.geofauna.screens.RegisterScreen
+import br.com.fiap.geofauna.screens.SearchAnimalScreen
 import br.com.fiap.geofauna.ui.theme.GeoFaunaTheme
 
 
@@ -30,6 +31,7 @@ class MainActivity : ComponentActivity() {
                 composable(route = "login") { LoginScreen(navController) }
                 composable(route = "register") { RegisterScreen(navController) }
                 composable(route = "dashboard") { DashboardScreen(navController) }
+                composable(route = "searchanimal") { SearchAnimalScreen(navController) }
             }
         }
     }

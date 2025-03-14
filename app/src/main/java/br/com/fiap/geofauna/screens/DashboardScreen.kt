@@ -65,7 +65,7 @@ fun DashboardScreen(navController: NavController) {
                 title = "Buscar por animal",
                 description = "Você pode buscar por um animal específico e saber mais sobre ele, além de seu habitat.",
                 buttonText = "Pesquisar",
-                onButtonClick = {  }
+                onButtonClick = { navController.navigate("searchanimal") }
             )
             Divider(
                 color = colorResource(id = R.color.gray),
