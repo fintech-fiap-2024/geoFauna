@@ -1,6 +1,36 @@
 package br.com.fiap.geofauna.model
 
+import br.com.fiap.geofauna.service.AnimalService
 import com.google.gson.annotations.SerializedName
+
+data class Animal(
+    val scientificName: AnimalService,
+    val kingdom: String,
+    val phylum: String,
+    val order: String,
+    val family: String,
+    val genus: String,
+    val species: String,
+    val habitat: String,
+    val media: List<Media>
+)
+
+data class Media(
+    val identifier: String,
+    val type: String
+)
+
+data class SpeciesSearchResult(
+    val key: Int, // speciesKey
+    val scientificName: String,
+    val canonicalName: String,
+    val vernacularName: String?
+)
+
+data class SpeciesSearchResponse(
+    val results: List<SpeciesSearchResult>
+)
+
 
 
 

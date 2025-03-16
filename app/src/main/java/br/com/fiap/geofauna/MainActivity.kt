@@ -4,16 +4,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import br.com.fiap.geofauna.model.AnimalViewModel
+import br.com.fiap.geofauna.screens.AnimalScreen
+import br.com.fiap.geofauna.screens.AnimalSearchScreen
 import br.com.fiap.geofauna.screens.DashboardScreen
 import br.com.fiap.geofauna.screens.LoginScreen
 import br.com.fiap.geofauna.screens.RegisterScreen
-import br.com.fiap.geofauna.screens.SearchAnimalScreen
+//import br.com.fiap.geofauna.screens.SearchAnimalScreen
 import br.com.fiap.geofauna.ui.theme.GeoFaunaTheme
 
 
@@ -31,7 +32,11 @@ class MainActivity : ComponentActivity() {
                 composable(route = "login") { LoginScreen(navController) }
                 composable(route = "register") { RegisterScreen(navController) }
                 composable(route = "dashboard") { DashboardScreen(navController) }
-                composable(route = "searchanimal") { SearchAnimalScreen(navController) }
+                composable(route = "searchanimal") {
+                    //AnimalScreen(navController, AnimalViewModel())
+                    val viewModel: AnimalViewModel = viewModel()
+                    AnimalSearchScreen(navController = navController, viewModel = viewModel)
+                }
             }
         }
     }
