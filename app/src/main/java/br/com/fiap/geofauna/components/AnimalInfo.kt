@@ -8,11 +8,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import br.com.fiap.geofauna.service.AnimalService
+import br.com.fiap.geofauna.model.Animal
 import coil.compose.rememberImagePainter
 
 @Composable
-fun AnimalInfo(animalInfo: AnimalService) {
+fun AnimalInfo(animalInfo: Animal?) {
+    if (animalInfo == null) {
+        Text("No animal information available")
+        return
+    }
+
     Column {
         // Exibe as informações da espécie
         Text(text = "Scientific Name: ${animalInfo.scientificName}")
@@ -25,8 +30,7 @@ fun AnimalInfo(animalInfo: AnimalService) {
         Text(text = "Habitat: ${animalInfo.habitat}")
 
         // Exibe a imagem do animal (se disponível)
-
-        val imageUrl = null
+        val imageUrl = animalInfo.media?.firstOrNull { it.type == "StillImage" }?.identifier
         if (imageUrl != null) {
             Image(
                 painter = rememberImagePainter(data = imageUrl),
@@ -40,4 +44,3 @@ fun AnimalInfo(animalInfo: AnimalService) {
         }
     }
 }
-

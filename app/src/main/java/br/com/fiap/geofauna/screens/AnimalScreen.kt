@@ -13,10 +13,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import br.com.fiap.geofauna.model.AnimalViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import br.com.fiap.geofauna.components.AnimalInfo
+import br.com.fiap.geofauna.model.AnimalViewModel
 
 @Composable
 fun AnimalScreen(
@@ -39,7 +39,7 @@ fun AnimalScreen(
         } else if (error != null) {
             Text(text = "Error: $error", color = Color.Red)
         } else if (animalInfo != null) {
-            AnimalInfo(animalInfo!!)
+            AnimalInfo(animalInfo)
         } else {
             Text("No data available")
         }

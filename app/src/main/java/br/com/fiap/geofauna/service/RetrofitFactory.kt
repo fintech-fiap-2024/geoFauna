@@ -1,11 +1,7 @@
 package br.com.fiap.geofauna.service
 
-import com.google.gson.Gson
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
 
 object RetrofitInstance {
     private const val BASE_URL = "https://api.gbif.org/v1/"
@@ -21,7 +17,6 @@ object RetrofitInstance {
         retrofit.create(AnimalService::class.java)
     }
 }
-
 
 
 

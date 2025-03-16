@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -33,7 +34,6 @@ class MainActivity : ComponentActivity() {
                 composable(route = "register") { RegisterScreen(navController) }
                 composable(route = "dashboard") { DashboardScreen(navController) }
                 composable(route = "searchanimal") {
-                    //AnimalScreen(navController, AnimalViewModel())
                     val viewModel: AnimalViewModel = viewModel()
                     AnimalSearchScreen(navController = navController, viewModel = viewModel)
                 }
