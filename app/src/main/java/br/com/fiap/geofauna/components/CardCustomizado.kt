@@ -38,7 +38,7 @@ fun CardCustomizado(
             .fillMaxWidth()
             .padding(16.dp),
         shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF00291F)),
+        colors = CardDefaults.cardColors(colorResource(id = R.color.secondary_color)),
         elevation = CardDefaults.cardElevation(defaultElevation = 12.dp)
     ) {
         Column(

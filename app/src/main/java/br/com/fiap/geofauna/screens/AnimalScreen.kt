@@ -40,9 +40,9 @@ fun AnimalScreen(viewModel: AnimalViewModel = viewModel()) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(start = 16.dp, top = 8.dp, end = 16.dp, bottom = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+//        verticalArrangement = Arrangement.Center
     ) {
         if (isLoading) {
             CircularProgressIndicator()
