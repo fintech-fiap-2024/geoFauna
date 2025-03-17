@@ -22,14 +22,3 @@ interface AnimalService {
     ): AnimalSearchResponse
 }
 
-
-
-//interface AnimalService {
-
-//    @GET("species/{speciesKey}")
-//    fun getSpeciesInfo(@Path("speciesKey") speciesKey: Int): Animal
-
-//    @GET("animals")
-//    fun getAnimalByName(@Query("name") animal: String): Call<List<Animal>>
-//}
-
