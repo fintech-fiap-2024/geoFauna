@@ -1,5 +1,6 @@
 package br.com.fiap.geofauna.screens
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -31,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -42,10 +44,16 @@ import androidx.navigation.NavController
 import br.com.fiap.geofauna.R
 import br.com.fiap.geofauna.components.BotaoCustomizado
 import br.com.fiap.geofauna.components.CaixaDeEntrada
+import br.com.fiap.geofauna.database.repository.UsuarioRepository
+import br.com.fiap.geofauna.model.Usuario
 import br.com.fiap.geofauna.ui.theme.SourceSerif
 
 @Composable
 fun RegisterScreen(navController: NavController) {
+
+    val context = LocalContext.current
+    val usuarioRepository = UsuarioRepository(context)
+
     var login by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -166,7 +174,17 @@ fun RegisterScreen(navController: NavController) {
                         text = "Registrar",
                         icon = painterResource(id = R.drawable.pata_laranja),
                         backgroundColor = colorResource(id = R.color.tertiary_color),
-                        onClick = {  }
+                        onClick = {
+                            val usuario = Usuario(
+                                id = 0,
+                                login = login,
+                                senha = password,
+                                telefone = celular,
+                                email = email
+                            )
+
+                            usuarioRepository.cadastrar(usuario)
+                        }
                     )
                 }
             }

@@ -1,5 +1,6 @@
 package br.com.fiap.geofauna.screens
 
+import android.app.AlertDialog
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -28,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -38,11 +40,17 @@ import androidx.navigation.NavController
 import br.com.fiap.geofauna.R
 import br.com.fiap.geofauna.components.BotaoCustomizado
 import br.com.fiap.geofauna.components.CaixaDeEntrada
+import br.com.fiap.geofauna.database.repository.UsuarioRepository
 import br.com.fiap.geofauna.ui.theme.Exo
 import br.com.fiap.geofauna.ui.theme.SourceSerif
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 @Composable
 fun LoginScreen(navController: NavController) {
+
+    val context = LocalContext.current
+    val usuarioRepository = UsuarioRepository(context)
+
     var login by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -130,7 +138,22 @@ fun LoginScreen(navController: NavController) {
                         text = "Entrar",
                         icon = painterResource(id = R.drawable.pata_verde),
                         backgroundColor = colorResource(id = R.color.secondary_color),
-                        onClick = { navController.navigate("dashboard") }
+                        onClick = {
+
+                            val usuario = usuarioRepository.login(login = login, senha = password)
+
+                            if(usuario != null){
+                                navController.navigate("dashboard")
+                            }else{
+                                AlertDialog.Builder(context)
+                                    .setTitle("Inválido")
+                                    .setMessage("Usuário ou senha estão incorretos")
+                                    .setPositiveButton("OK") { dialog, _ ->
+                                        dialog.dismiss()
+                                    }
+                                    .show()
+                            }
+                        }
                     )
                     BotaoCustomizado(
                         text = "Registrar",
