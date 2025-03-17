@@ -2,14 +2,7 @@ package br.com.fiap.geofauna.model
 
 data class Animal(
     val scientificName: String,
-    val kingdom: String,
-    val phylum: String,
-    val order: String,
-    val family: String,
-    val genus: String,
-    val species: String,
-    val habitat: String,
-    var media: List<Media>
+    val media: List<Media> = emptyList()  // Inicializa com uma lista vazia
 )
 
 data class Media(
@@ -41,7 +34,14 @@ data class SpeciesSearchResponse(
     val facets: List<Any> // Pode ser substituído por uma classe específica se houver facetas
 )
 
+data class AnimalSearchResponse(
+    val results: List<AnimalResult>
+)
 
+data class AnimalResult(
+    val scientificName: String,
+    val media: List<Media>?
+)
 
 
 

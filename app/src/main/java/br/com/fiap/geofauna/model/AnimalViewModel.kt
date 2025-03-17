@@ -18,41 +18,25 @@ class AnimalViewModel : ViewModel() {
     private val _error = MutableStateFlow<String?>(null)
     val error: StateFlow<String?> = _error
 
-    fun searchSpecies(query: String) {
+    fun searchAnimalByScientificName(scientificName: String) {
         viewModelScope.launch {
             _isLoading.value = true
             _error.value = null
             try {
-                val response = RetrofitInstance.api.searchSpecies(query)
+                val response = RetrofitInstance.api.searchAnimalByScientificName(scientificName)
                 if (response.results.isNotEmpty()) {
-                    val speciesKey = response.results[0].key
-                    fetchAnimalInfo(speciesKey)
+                    val animalResult = response.results[0]
+                    // Certifique-se de passar uma lista vazia se media for null
+                    val animal = Animal(
+                        scientificName = animalResult.scientificName,
+                        media = animalResult.media ?: emptyList()  // Verifique se media é null
+                    )
+                    _animalInfo.value = animal
                 } else {
                     _error.value = "No results found"
                 }
             } catch (e: Exception) {
                 _error.value = e.message
-            } finally {
-                _isLoading.value = false
-            }
-        }
-    }
-
-    fun fetchAnimalInfo(speciesKey: Int) {
-        viewModelScope.launch {
-            _isLoading.value = true
-            _error.value = null
-            try {
-                val response = RetrofitInstance.api.getSpeciesInfo(speciesKey)
-                Log.d("API Response", "Animal Info: $response")
-                Log.d("API Response", "Media: ${response.media}")
-                if (response.media == null) {
-                    // Inicialize `media` com uma lista vazia se for null
-                    response.media = emptyList()
-                }
-                _animalInfo.value = response
-            } catch (e: Exception) {
-                _error.value = e.message ?: "An error occurred"
             } finally {
                 _isLoading.value = false
             }

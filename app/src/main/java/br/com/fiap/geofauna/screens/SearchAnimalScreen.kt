@@ -45,11 +45,11 @@ fun AnimalSearchScreen(
             label = { Text("Enter species name") }
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { viewModel.searchSpecies(query) }) {
+        Button(onClick = { viewModel.searchAnimalByScientificName(query) }) {
             Text("Search")
         }
         Spacer(modifier = Modifier.height(16.dp))
-        AnimalScreen(navController = navController, viewModel = viewModel)
+        AnimalScreen(viewModel = viewModel)
     }
 }
 
