@@ -25,7 +25,6 @@ import androidx.navigation.NavController
 import br.com.fiap.geofauna.R
 import br.com.fiap.geofauna.components.CardCustomizado
 
-
 @Composable
 fun DashboardScreen(navController: NavController) {
     Column(
@@ -59,9 +58,9 @@ fun DashboardScreen(navController: NavController) {
             verticalArrangement = Arrangement.Center,
         ) {
             CardCustomizado(
-                title = "Buscar por animal",
+                title = "Buscar por taxonomia",
                 icon = painterResource(id = R.drawable.search_24),
-                description = "Você pode buscar por um animal específico e saber mais sobre ele, além de seu habitat.",
+                description = "Você pode buscar por um animal específico e saber mais sobre sua taxonomia.",
                 buttonText = "Pesquisar",
                 onButtonClick = { navController.navigate("searchanimal") }
             )
@@ -73,7 +72,7 @@ fun DashboardScreen(navController: NavController) {
             CardCustomizado(
                 title = "Buscar por região",
                 icon = painterResource(id = R.drawable.map_24),
-                description = "Você pode visualizar o mapa e os animais mais comuns de cada região.",
+                description = "Você pode visualizar no mapa a última ocorrência registrada de uma determinada espécie",
                 buttonText = "Abrir mapa",
                 onButtonClick = { navController.navigate("mapScreen") }
             )

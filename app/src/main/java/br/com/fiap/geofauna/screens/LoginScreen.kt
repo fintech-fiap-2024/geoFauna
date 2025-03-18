@@ -43,7 +43,6 @@ import br.com.fiap.geofauna.components.CaixaDeEntrada
 import br.com.fiap.geofauna.database.repository.UsuarioRepository
 import br.com.fiap.geofauna.ui.theme.Exo
 import br.com.fiap.geofauna.ui.theme.SourceSerif
-//import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 @Composable
 fun LoginScreen(navController: NavController) {

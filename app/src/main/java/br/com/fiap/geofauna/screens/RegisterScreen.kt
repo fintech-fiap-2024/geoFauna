@@ -1,6 +1,5 @@
 package br.com.fiap.geofauna.screens
 
-import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -60,7 +59,6 @@ fun RegisterScreen(navController: NavController) {
     var celular by remember { mutableStateOf("") }
 
     Box(modifier = Modifier.fillMaxSize()){
-        //background image
         Image(
             painter = painterResource(id= R.drawable.background_image),
             contentDescription = null,

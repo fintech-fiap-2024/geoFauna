@@ -2,21 +2,15 @@ package br.com.fiap.geofauna.components
 
 import TextoCustomizado
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -34,9 +28,7 @@ import androidx.compose.ui.unit.dp
 import br.com.fiap.geofauna.R
 import br.com.fiap.geofauna.model.Animal
 import br.com.fiap.geofauna.ui.theme.Exo
-import br.com.fiap.geofauna.ui.theme.SourceSerif
 import coil.compose.rememberAsyncImagePainter
-import coil.compose.rememberImagePainter
 
 @Composable
 fun AnimalInfo(animalInfo: Animal?) {
@@ -72,7 +64,7 @@ fun AnimalInfo(animalInfo: Animal?) {
                 text = kingdomNameNameText,
                 modifier = Modifier.padding(6.dp),
                 fontSize = 24,
-                fontFamily = SourceSerif,
+                fontFamily = Exo,
                 fontWeight =  FontWeight.Bold,
                 color = Color.White
             )
@@ -89,7 +81,7 @@ fun AnimalInfo(animalInfo: Animal?) {
                 text = phylumNameNameText,
                 modifier = Modifier.padding(6.dp),
                 fontSize = 20,
-                fontFamily = SourceSerif,
+                fontFamily = Exo,
                 fontWeight =  FontWeight.Bold,
                 color = Color.White
             )
@@ -124,7 +116,7 @@ fun AnimalInfo(animalInfo: Animal?) {
                     text = vernacularNameNameText,
                     modifier = Modifier.padding(6.dp),
                     fontSize = 20,
-                    fontFamily = SourceSerif,
+                    fontFamily = Exo,
                     fontWeight =  FontWeight.Bold,
                     color = Color.White
                 )
@@ -145,7 +137,7 @@ fun AnimalInfo(animalInfo: Animal?) {
                 text = scientificNameText, // Passa o AnnotatedString
                 modifier = Modifier.padding(6.dp),
                 fontSize = 20,
-                fontFamily = SourceSerif,
+                fontFamily = Exo,
                 color = Color.White
             )
 

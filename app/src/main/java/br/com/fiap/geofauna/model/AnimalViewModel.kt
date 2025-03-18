@@ -1,6 +1,5 @@
 package br.com.fiap.geofauna.model
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.fiap.geofauna.service.RetrofitInstance
