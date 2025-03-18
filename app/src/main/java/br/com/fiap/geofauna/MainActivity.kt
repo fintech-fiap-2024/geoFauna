@@ -14,7 +14,9 @@ import br.com.fiap.geofauna.screens.AnimalScreen
 import br.com.fiap.geofauna.screens.AnimalSearchScreen
 import br.com.fiap.geofauna.screens.DashboardScreen
 import br.com.fiap.geofauna.screens.LoginScreen
+import br.com.fiap.geofauna.screens.MapScreen
 import br.com.fiap.geofauna.screens.RegisterScreen
+import br.com.fiap.geofauna.screens.SearchMapScreen
 //import br.com.fiap.geofauna.screens.SearchAnimalScreen
 import br.com.fiap.geofauna.ui.theme.GeoFaunaTheme
 
@@ -37,6 +39,7 @@ class MainActivity : ComponentActivity() {
                     val viewModel: AnimalViewModel = viewModel()
                     AnimalSearchScreen(navController = navController, viewModel = viewModel)
                 }
+                composable("mapScreen") { SearchMapScreen(navController) }
             }
         }
     }

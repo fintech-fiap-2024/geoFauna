@@ -9,8 +9,8 @@ data class Animal(
     val family: String?,
     val species: String?,
     val media: List<Media> = emptyList(),  // Inicializa com uma lista vazia
-    val decimalLatitude: String,
-    val decimalLongitude: String
+    val decimalLatitude: Double,
+    val decimalLongitude: Double
 )
 
 data class Media(
@@ -55,6 +55,6 @@ data class AnimalResult(
     val family: String?,
     val species: String?,
     val media: List<Media>?,
-    val decimalLatitude: String,
-    val decimalLongitude: String
+    val decimalLatitude: Double,
+    val decimalLongitude: Double
 )

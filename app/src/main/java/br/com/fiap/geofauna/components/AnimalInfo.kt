@@ -70,7 +70,7 @@ fun AnimalInfo(animalInfo: Animal?) {
             }
             TextoCustomizado(
                 text = kingdomNameNameText,
-                modifier = Modifier.padding(8.dp),
+                modifier = Modifier.padding(6.dp),
                 fontSize = 24,
                 fontFamily = SourceSerif,
                 fontWeight =  FontWeight.Bold,
@@ -87,7 +87,7 @@ fun AnimalInfo(animalInfo: Animal?) {
             }
             TextoCustomizado(
                 text = phylumNameNameText,
-                modifier = Modifier.padding(8.dp),
+                modifier = Modifier.padding(6.dp),
                 fontSize = 20,
                 fontFamily = SourceSerif,
                 fontWeight =  FontWeight.Bold,
@@ -122,7 +122,7 @@ fun AnimalInfo(animalInfo: Animal?) {
                 }
                 TextoCustomizado(
                     text = vernacularNameNameText,
-                    modifier = Modifier.padding(8.dp),
+                    modifier = Modifier.padding(6.dp),
                     fontSize = 20,
                     fontFamily = SourceSerif,
                     fontWeight =  FontWeight.Bold,
@@ -143,7 +143,7 @@ fun AnimalInfo(animalInfo: Animal?) {
 
             TextoCustomizado(
                 text = scientificNameText, // Passa o AnnotatedString
-                modifier = Modifier.padding(8.dp),
+                modifier = Modifier.padding(6.dp),
                 fontSize = 20,
                 fontFamily = SourceSerif,
                 color = Color.White
@@ -160,7 +160,7 @@ fun AnimalInfo(animalInfo: Animal?) {
             }
             TextoCustomizado(
                 text = orderNameText,
-                modifier = Modifier.padding(8.dp),
+                modifier = Modifier.padding(6.dp),
                 fontSize = 18,
                 fontFamily = Exo,
                 fontWeight =  FontWeight.Light,
@@ -178,7 +178,7 @@ fun AnimalInfo(animalInfo: Animal?) {
             }
             TextoCustomizado(
                 text = familyNameText,
-                modifier = Modifier.padding(8.dp),
+                modifier = Modifier.padding(6.dp),
                 fontSize = 18,
                 fontFamily = Exo,
                 fontWeight =  FontWeight.Light,
@@ -196,7 +196,7 @@ fun AnimalInfo(animalInfo: Animal?) {
             }
             TextoCustomizado(
                 text = speciesNameText,
-                modifier = Modifier.padding(8.dp),
+                modifier = Modifier.padding(6.dp),
                 fontSize = 18,
                 fontFamily = Exo,
                 fontWeight =  FontWeight.Light,

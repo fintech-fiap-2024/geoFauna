@@ -75,7 +75,7 @@ fun DashboardScreen(navController: NavController) {
                 icon = painterResource(id = R.drawable.map_24),
                 description = "Você pode visualizar o mapa e os animais mais comuns de cada região.",
                 buttonText = "Abrir mapa",
-                onButtonClick = {  }
+                onButtonClick = { navController.navigate("mapScreen") }
             )
         }
     }
