@@ -45,7 +45,7 @@ fun MapScreen(viewModel: AnimalViewModel = viewModel()) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Localização do Animal",
+            text = "Localização de um exemplar",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             fontFamily = SourceSerif,

@@ -117,7 +117,7 @@ fun RegisterScreen(navController: NavController) {
                 }
                 CaixaDeEntrada(
                     value = login,
-                    label = "Digite o login",
+                    label = "Digite o usuário",
                     onValueChange = { login = it },
                     trailingIcon = {
                         Icon(
