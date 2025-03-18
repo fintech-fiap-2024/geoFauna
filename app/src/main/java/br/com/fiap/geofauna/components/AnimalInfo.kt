@@ -25,7 +25,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import br.com.fiap.geofauna.R
 import br.com.fiap.geofauna.model.Animal
@@ -55,16 +59,34 @@ fun AnimalInfo(animalInfo: Animal?) {
             elevation = CardDefaults.cardElevation(defaultElevation = 12.dp),
             colors = CardDefaults.cardColors(colorResource(id = R.color.secondary_color))
         ) {
+
+            val kingdomNameNameText = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append("Reino: ")
+                }
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Medium)) {
+                    append(animalInfo.kingdom!!)
+                }
+            }
             TextoCustomizado(
-                text = "Reino: ${animalInfo.kingdom}",
+                text = kingdomNameNameText,
                 modifier = Modifier.padding(8.dp),
                 fontSize = 24,
                 fontFamily = SourceSerif,
                 fontWeight =  FontWeight.Bold,
                 color = Color.White
             )
+
+            val phylumNameNameText = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append("Filo: ")
+                }
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Medium)) {
+                    append(animalInfo.phylum!!)
+                }
+            }
             TextoCustomizado(
-                text = "Filo: ${animalInfo.phylum}",
+                text = phylumNameNameText,
                 modifier = Modifier.padding(8.dp),
                 fontSize = 20,
                 fontFamily = SourceSerif,
@@ -89,8 +111,17 @@ fun AnimalInfo(animalInfo: Animal?) {
             }
 
             if (!animalInfo.vernacularName.isNullOrEmpty()) {
+
+                val vernacularNameNameText = buildAnnotatedString {
+                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                        append("Nome Comum: ")
+                    }
+                    withStyle(style = SpanStyle(fontWeight = FontWeight.Medium)) {
+                        append(animalInfo.vernacularName)
+                    }
+                }
                 TextoCustomizado(
-                    text = "Nome comum: ${animalInfo.vernacularName}",
+                    text = vernacularNameNameText,
                     modifier = Modifier.padding(8.dp),
                     fontSize = 20,
                     fontFamily = SourceSerif,
@@ -98,32 +129,73 @@ fun AnimalInfo(animalInfo: Animal?) {
                     color = Color.White
                 )
             }
+            val scientificNameText = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append("Nome científico: ")
+                }
+                withStyle(style = SpanStyle(
+                    fontWeight = FontWeight.Medium,
+                    fontStyle = FontStyle.Italic
+                )) {
+                    append(animalInfo.scientificName)
+                }
+            }
+
             TextoCustomizado(
-                text = "Nome científico: ${animalInfo.scientificName}",
+                text = scientificNameText, // Passa o AnnotatedString
                 modifier = Modifier.padding(8.dp),
                 fontSize = 20,
                 fontFamily = SourceSerif,
-                fontWeight =  FontWeight.Medium,
                 color = Color.White
             )
+
+
+            val orderNameText = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append("Ordem: ")
+                }
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Medium)) {
+                    append(animalInfo.order!!)
+                }
+            }
             TextoCustomizado(
-                text = "Ordem: ${animalInfo.order}",
+                text = orderNameText,
                 modifier = Modifier.padding(8.dp),
                 fontSize = 18,
                 fontFamily = Exo,
                 fontWeight =  FontWeight.Light,
                 color = Color.White
             )
+
+
+            val familyNameText = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append("Familia: ")
+                }
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Medium)) {
+                    append(animalInfo.family!!)
+                }
+            }
             TextoCustomizado(
-                text = "Família: ${animalInfo.family}",
+                text = familyNameText,
                 modifier = Modifier.padding(8.dp),
                 fontSize = 18,
                 fontFamily = Exo,
                 fontWeight =  FontWeight.Light,
                 color = Color.White
             )
+
+
+            val speciesNameText = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                    append("Espécie: ")
+                }
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Medium)) {
+                    append(animalInfo.species!!)
+                }
+            }
             TextoCustomizado(
-                text = "Espécie: ${animalInfo.species}",
+                text = speciesNameText,
                 modifier = Modifier.padding(8.dp),
                 fontSize = 18,
                 fontFamily = Exo,
