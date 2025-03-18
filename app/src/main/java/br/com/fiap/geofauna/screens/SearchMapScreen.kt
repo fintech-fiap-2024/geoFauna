@@ -63,13 +63,7 @@ fun SearchMapScreen(
                 )
             )
             Spacer(modifier = Modifier.padding(top = 24.dp, bottom = 24.dp))
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(600.dp)
-            ) {
-                MapScreen(viewModel = viewModel)
-            }
+            MapScreen(viewModel = viewModel)
         }
         Button(
             modifier = Modifier
