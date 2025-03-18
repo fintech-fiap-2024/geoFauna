@@ -7,12 +7,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -31,12 +33,19 @@ fun MapScreen(viewModel: AnimalViewModel = viewModel()) {
 
     // Configuração do mapa
     AndroidView(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().padding(8.dp),
         factory = { ctx ->
             MapView(ctx).apply {
-                setTileSource(TileSourceFactory.MAPNIK)
+                setTileSource(TileSourceFactory.MAPNIK) // Usa o mapa padrão do OpenStreetMap
                 Configuration.getInstance().userAgentValue = context.packageName
-                setMultiTouchControls(true)
+                setMultiTouchControls(false) // Habilita controles de toque (zoom, rotação, etc.)
+                controller.setZoom(2.0) // Define um zoom inicial para mostrar o mundo inteiro
+                controller.setCenter(GeoPoint(0.0, 0.0)) // Centraliza o mapa no equador e meridiano de Greenwich
+
+                // Desativa a repetição de tiles
+                isHorizontalMapRepetitionEnabled = false
+                isVerticalMapRepetitionEnabled = false
+
             }
         },
         update = { mapView ->
@@ -45,7 +54,7 @@ fun MapScreen(viewModel: AnimalViewModel = viewModel()) {
                 val longitude = animalInfo!!.decimalLongitude
 
                 val startPoint = GeoPoint(latitude, longitude)
-                mapView.controller.setZoom(100.0)
+                mapView.controller.setZoom(8.0)
                 mapView.controller.setCenter(startPoint)
 
                 val marker = Marker(mapView)
@@ -56,7 +65,6 @@ fun MapScreen(viewModel: AnimalViewModel = viewModel()) {
         }
     )
 }
-
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewMapScreen(){

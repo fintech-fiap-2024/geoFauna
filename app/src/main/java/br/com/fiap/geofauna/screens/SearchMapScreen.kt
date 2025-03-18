@@ -62,10 +62,11 @@ fun SearchMapScreen(
                     cursorColor = colorResource(id = R.color.secondary_color)
                 )
             )
+            Spacer(modifier = Modifier.padding(top = 24.dp, bottom = 24.dp))
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp)
+                    .height(600.dp)
             ) {
                 MapScreen(viewModel = viewModel)
             }
