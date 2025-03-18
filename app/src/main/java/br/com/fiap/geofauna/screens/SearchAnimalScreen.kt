@@ -2,6 +2,7 @@ package br.com.fiap.geofauna.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -47,101 +48,54 @@ fun AnimalSearchScreen(
 ) {
     var query by remember { mutableStateOf("") }
 
-//    Column(
-//        modifier = Modifier
-//            .fillMaxSize()
-//            .background(color = colorResource(id = R.color.primary_color))
-//            .padding(16.dp),
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//        verticalArrangement = Arrangement.Top
-//    ) {
-//        TextField(
-//            modifier = Modifier
-//                .padding(bottom = 16.dp)
-//                .fillMaxWidth(),
-//            value = query,
-//            onValueChange = { query = it },
-//            label = { Text("Digite o nome científico") },
-//            trailingIcon = {
-//                IconButton(
-//                    onClick = { viewModel.searchAnimalByScientificName(query) }
-//                ) {
-//                    Icon(
-//                        painterResource(id = R.drawable.search_24),
-//                        contentDescription = "Ícone de busca"
-//                    )
-//                }
-//            },
-//            colors = androidx.compose.material3.TextFieldDefaults.textFieldColors(
-//                textColor = Color.Black,
-//                focusedLabelColor = colorResource(id = R.color.secondary_color),
-//                containerColor = Color.White,
-//                focusedIndicatorColor = colorResource(id = R.color.tertiary_color),
-//                unfocusedIndicatorColor = Color.Gray,
-//                cursorColor = colorResource(id = R.color.secondary_color)
-//            )
-//        )
-//        Button(
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .padding(start = 16.dp, end = 16.dp),
-//            colors = ButtonDefaults.buttonColors(
-//                containerColor = colorResource(id = R.color.tertiary_color)),
-//            shape = RectangleShape,
-//            onClick = { viewModel.searchAnimalByScientificName(query) }
-//        ) {
-//            Text(text = "Encontrar Animal")
-//        }
-//        AnimalScreen(viewModel = viewModel)
-//
-//    }
-
-
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .background(color = colorResource(id = R.color.primary_color))
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top // Alinha os filhos no topo
+            .padding(16.dp)
     ) {
-        TextField(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 16.dp), // Espaço abaixo do TextField
-            value = query,
-            onValueChange = { query = it },
-            label = { Text("Digite o nome científico") },
-            trailingIcon = {
-                IconButton(
-                    onClick = { viewModel.searchAnimalByScientificName(query) }
-                ) {
-                    Icon(
-                        painterResource(id = R.drawable.search_24),
-                        contentDescription = "Ícone de busca"
-                    )
-                }
-            },
-            colors = androidx.compose.material3.TextFieldDefaults.textFieldColors(
-                textColor = Color.Black,
-                focusedLabelColor = colorResource(id = R.color.secondary_color),
-                containerColor = Color.White,
-                focusedIndicatorColor = colorResource(id = R.color.tertiary_color),
-                unfocusedIndicatorColor = Color.Gray,
-                cursorColor = colorResource(id = R.color.secondary_color)
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top
+        ) {
+            // TextField no topo da tela
+            TextField(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp),
+                value = query,
+                onValueChange = { query = it },
+                label = { Text("Digite o nome científico") },
+                trailingIcon = {
+                    IconButton(
+                        onClick = { viewModel.searchAnimalByScientificName(query) }
+                    ) {
+                        Icon(
+                            painterResource(id = R.drawable.search_24),
+                            contentDescription = "Ícone de busca"
+                        )
+                    }
+                },
+                colors = androidx.compose.material3.TextFieldDefaults.textFieldColors(
+                    textColor = Color.Black,
+                    focusedLabelColor = colorResource(id = R.color.secondary_color),
+                    containerColor = Color.White,
+                    focusedIndicatorColor = colorResource(id = R.color.tertiary_color),
+                    unfocusedIndicatorColor = Color.Gray,
+                    cursorColor = colorResource(id = R.color.secondary_color)
+                )
             )
-        )
-
-        AnimalScreen(
-
-            viewModel = viewModel
-        )
-
-        // Spacer para empurrar o botão para o final da tela
-//        Spacer(modifier = Modifier.weight(1f))
-
+            AnimalScreen(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+                viewModel = viewModel
+            )
+        }
         Button(
             modifier = Modifier
+                .align(Alignment.BottomCenter)
                 .fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(
                 containerColor = colorResource(id = R.color.tertiary_color)
